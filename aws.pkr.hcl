@@ -8,10 +8,10 @@ packer {
 }
 
 source "amazon-ebs" "alma-linux" {
-  ami_name      = "inovshop-cwc-ami3"
+  ami_name      = "inovshop-cwc-ami5"
   instance_type = "t2.micro"
   region        = "eu-central-1"
-  source_ami    = "ami-0cd34007f2a79c4a6" 
+  source_ami    = "ami-07c10881bbd3a9024" 
   #ami = "aws-marketplace/AlmaLinux OS 8.6.20220901 x86_64-c076b20a-2305-4771-823f-944909847a05"  
   ssh_username  = "ec2-user"
 }
@@ -23,5 +23,5 @@ source "amazon-ebs" "alma-linux" {
    provisioner "shell" {
     script = "./install.sh"
   }
-  name = "inovshopcwcami2"
+  name = "inovshopcwcami4"
 }
