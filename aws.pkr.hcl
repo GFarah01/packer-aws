@@ -8,19 +8,24 @@ packer {
 }
 
 source "amazon-ebs" "debian" {
-  ami_name      = "debian-aws-inovshop"
-  instance_type = "t2.micro"
-  region        = "eu-central-1"
-  source_ami    = "ami-0ec7f9846da6b0f61" 
-  ssh_username  = "ubuntu"
+  ami_name                    = "debian-cwc-paris-b"
+  associate_public_ip_address = true
+  vpc_id                      = "vpc-0f2534cdfaf552861"
+  subnet_id                   = "subnet-032feb45f6a733c21"
+  security_group_id           = "sg-0165623a9be1cdf5a"
+  instance_type               = "t2.micro"
+  region                      = "eu-west-3"
+  source_ami                  = "ami-008bcc0a51a849165"
+  ssh_username                = "ubuntu"
+
 }
 
- build {
+build {
   sources = [
     "source.amazon-ebs.debian"
-    ] 
-   provisioner "shell" {
+  ]
+  provisioner "shell" {
     script = "./install.sh"
   }
-  name = "debian-aws-inovshop"
+  name = "debian-cwc-paris"
 }
