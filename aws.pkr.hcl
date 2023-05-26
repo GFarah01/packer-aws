@@ -7,21 +7,20 @@ packer {
   }
 }
 
-source "amazon-ebs" "alma-linux" {
-  ami_name      = "inovshop-cwc-ami5"
+source "amazon-ebs" "debian" {
+  ami_name      = "debian-aws-inovshop"
   instance_type = "t2.micro"
   region        = "eu-central-1"
-  source_ami    = "ami-07c10881bbd3a9024" 
-  #ami = "aws-marketplace/AlmaLinux OS 8.6.20220901 x86_64-c076b20a-2305-4771-823f-944909847a05"  
-  ssh_username  = "ec2-user"
+  source_ami    = "ami-0ec7f9846da6b0f61" 
+  ssh_username  = "ubuntu"
 }
 
  build {
   sources = [
-    "source.amazon-ebs.alma-linux"
+    "source.amazon-ebs.debian"
     ] 
    provisioner "shell" {
     script = "./install.sh"
   }
-  name = "inovshopcwcami4"
+  name = "debian-aws-inovshop"
 }
