@@ -1,31 +1,31 @@
 packer {
   required_plugins {
-    amazon = {
-      version = ">= 0.0.2"
-      source  = "github.com/hashicorp/amazon"
+    googlecompute = {
+      version = ">= 1.1.1"
+      source  = "github.com/hashicorp/googlecompute"
     }
   }
 }
 
-source "amazon-ebs" "debian" {
-  ami_name                    = "debian-cwc-paris-c"
-  associate_public_ip_address = true
-  vpc_id                      = "vpc-0f2534cdfaf552861"
-  subnet_id                   = "subnet-02c10797efa13e011"
-  security_group_id           = "sg-0165623a9be1cdf5a"
-  instance_type               = "t2.micro"
-  region                      = "eu-west-3"
-  source_ami                  = "ami-008bcc0a51a849165"
-  ssh_username                = "ubuntu"
-
+source "googlecompute" "centos" {
+  project_id                      = "comworkio"
+  account_file                    = "/home/comwork/Downloads/comworkio-894900055ef9.json"
+  image_name                      = "centos-gcp-image"
+  source_image                    = "centos-stream-8-v20230509"
+  zone                            = "europe-west9-a"
+  disk_size                       = "20"
+  machine_type                    = "e2-micro"
+  ssh_username                    = "centos"
+  region                          = "europe-west9"
+  instance_name                   = "packer-centos-4"
+  ssh_pty                         = true
 }
 
 build {
-  sources = [
-    "source.amazon-ebs.debian"
-  ]
+  sources = ["source.googlecompute.centos"]
+
   provisioner "shell" {
     script = "./install.sh"
   }
-  name = "debian-cwc-paris"
+  name = "gcp-centos-image"
 }
