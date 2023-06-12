@@ -8,19 +8,20 @@ packer {
 }
 
 source "googlecompute" "centos" {
-  project_id    = "comworkio"
-  account_file  = "/home/comwork/Downloads/comworkio-894900055ef9.json"
-  image_name    = "centos-gcp-image2"
-  source_image  = "centos-stream-8-v20230509"
-  zone          = "europe-west9-a"
-  disk_size     = "40"
-  machine_type  = "e2-small"
-  ssh_username  = "centos"
-  region        = "europe-west9"
-  instance_name = "packer-centos"
-  ssh_pty       = true
+  project_id   = "comworkio"
+  account_file = "/home/comwork/Downloads/comworkio-894900055ef9.json"
+  image_name   = "centos-gcp-image5"
+  source_image = "centos-stream-9-v20230509"
+  source_image_family = "centos-stream-9"
+  zone                = "europe-west9-a"
+  disk_size           = "40"
+  machine_type        = "e2-small"
+  ssh_username        = "centos"
+  region              = "europe-west9"
+  instance_name       = "packer-centos"
+  ssh_pty             = true
   metadata = {
-    startup-script-url = "./script.yml"
+    startup-script = "cloud-init.yml"
   }
 }
 
@@ -32,9 +33,9 @@ build {
   }
 
   provisioner "file" {
-    source      = "./script.yml"
-    destination = "/tmp/cloud-init-script.yml"
+    source      = "./cloud-init.yml"
+    destination = "/tmp/cloud-init.yml"
   }
-  name = "centos-gcp-image2"
+  name = "centos-gcp-image"
 }
 
