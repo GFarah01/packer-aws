@@ -1,0 +1,12 @@
+Name:              app-omni-service
+Namespace:         omni-omni
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=app
+Type:              ClusterIP
+IP:                172.20.95.3
+Port:              <unset>  8000/TCP
+TargetPort:        80/TCP
+Endpoints:         10.2.24.152:80
+Session Affinity:  None
+Events:            <none>

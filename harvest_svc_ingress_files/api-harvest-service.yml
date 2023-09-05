@@ -1,0 +1,12 @@
+Name:              api-harvest-service
+Namespace:         harvest-harvest
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=api
+Type:              ClusterIP
+IP:                172.20.159.230
+Port:              <unset>  9000/TCP
+TargetPort:        7000/TCP
+Endpoints:         10.2.5.94:7000
+Session Affinity:  None
+Events:            <none>

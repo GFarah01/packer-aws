@@ -1,0 +1,12 @@
+Name:              website-harvest-service
+Namespace:         harvest-harvest
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=website
+Type:              ClusterIP
+IP:                172.20.122.251
+Port:              <unset>  9001/TCP
+TargetPort:        5000/TCP
+Endpoints:         10.2.8.221:5000
+Session Affinity:  None
+Events:            <none>

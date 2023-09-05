@@ -1,0 +1,12 @@
+Name:              website-omni-service
+Namespace:         omni-omni
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=website
+Type:              ClusterIP
+IP:                172.20.56.254
+Port:              <unset>  9001/TCP
+TargetPort:        5000/TCP
+Endpoints:         10.2.8.18:5000
+Session Affinity:  None
+Events:            <none>

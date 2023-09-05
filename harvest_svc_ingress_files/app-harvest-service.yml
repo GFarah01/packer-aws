@@ -1,0 +1,12 @@
+Name:              app-harvest-service
+Namespace:         harvest-harvest
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=app
+Type:              ClusterIP
+IP:                172.20.230.122
+Port:              <unset>  8000/TCP
+TargetPort:        80/TCP
+Endpoints:         10.2.28.239:80
+Session Affinity:  None
+Events:            <none>
